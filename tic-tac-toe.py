@@ -6,6 +6,10 @@ class Board:
                      "-","-","-",
                      "-","-","-"
                      ]
+
+    def refresh_page(self):
+        os.system("clear")
+        board.display()
     def display(self):
        print(self.cells[0],self.cells[1],self.cells[2])
        print("------")
@@ -40,15 +44,10 @@ class Board:
 
 board= Board()
 
-def print_header():
-    print("Welcome to Tic Tac Toe")
-    print("----------------------")
-def refresh_page():
-    os.system("clear")
-    print_header()
-    board.display()
+
+
 while True:
-    refresh_page()
+    board.refresh_page()
     x_choice = int(input("X's choice: "))
     board.update("X", x_choice)
     if board.is_wiinner("X"):
@@ -57,7 +56,7 @@ while True:
     if(board.is_tie()):
         print("It's a tie!")
         break
-    refresh_page()
+    board.refresh_page()
     o_choice = int(input("O's choice: "))
     board.update("O", o_choice)
     if board.is_wiinner("O"):
